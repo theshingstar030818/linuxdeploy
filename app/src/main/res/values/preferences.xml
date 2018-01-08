@@ -24,6 +24,8 @@
     <string name="is_http" translatable="false">false</string>
     <string name="http_port" translatable="false">5080</string>
     <string name="http_conf" translatable="false"></string>
+    <string name="is_pulseaudio" translatable="false">false</string>
+    <string name="pulseaudio_port" translatable="false">4712</string>
     <string name="profile" translatable="false">linux</string>
     <string name="debug_mode" translatable="false">false</string>
     <string name="trace_mode" translatable="false">false</string>
@@ -61,6 +63,9 @@
     <string name="is_ssh" translatable="false">false</string>
     <string name="ssh_port" translatable="false">22</string>
     <string name="ssh_options" translatable="false"></string>
+    <string name="is_audio" translatable="false">false</string>
+    <string name="pulse_host" translatable="false">127.0.0.1</string>
+    <string name="pulse_port" translatable="false">4712</string>
     <string name="is_gui" translatable="false">false</string>
     <string name="graphics" translatable="false">vnc</string>
     <string name="desktop" translatable="false">lxde</string>

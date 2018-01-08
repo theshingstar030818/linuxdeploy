@@ -1,3 +1,6 @@
 [submodule "app/src/main/assets/env"]
 	path = app/src/main/assets/env
 	url = https://github.com/meefik/linuxdeploy-cli
+[submodule "contrib/pulseaudio-sles-ndk"]
+	path = contrib/pulseaudio-sles-ndk
+	url = https://github.com/twaik/pulseaudio-sles-ndk

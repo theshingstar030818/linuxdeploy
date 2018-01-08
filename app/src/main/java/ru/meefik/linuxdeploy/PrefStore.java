@@ -1,7 +1,6 @@
 package ru.meefik.linuxdeploy;
 
 import android.annotation.SuppressLint;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -94,6 +93,26 @@ public class PrefStore {
     }
 
     /**
+     * Get etc directory
+     *
+     * @param c context
+     * @return path, e.g. /data/data/package/etc
+     */
+    static String getEtcDir(Context c) {
+        return getDataDir(c) + "/etc";
+    }
+
+    /**
+     * Get lib directory
+     *
+     * @param c context
+     * @return path, e.g. /data/data/package/libs
+     */
+    static String getLibsDir(Context c) {
+        return getDataDir(c) + "/libs";
+    }
+
+    /**
      * Get tmp directory
      *
      * @param c context
@@ -111,16 +130,6 @@ public class PrefStore {
      */
     static String getWebDir(Context c) {
         return getDataDir(c) + "/web";
-    }
-
-    /**
-     * Get httpd.conf file
-     *
-     * @param c context
-     * @return path of httpd.conf
-     */
-    static File getHttpConfFile(Context c) {
-        return new File(getWebDir(c) + "/httpd.conf");
     }
 
     /**
@@ -381,9 +390,9 @@ public class PrefStore {
      * @return Auto start delay in seconds
      */
     static Integer getAutostartDelay(Context c) {
-        try{
+        try {
             return Integer.parseInt(SETTINGS.get(c, "autostart_delay"));
-        }catch(Exception e){
+        } catch (Exception e) {
             return 0;
         }
     }
@@ -549,6 +558,26 @@ public class PrefStore {
         String auth = SETTINGS.get(c, "http_conf");
         if (auth.isEmpty()) auth = "/:android:" + generatePassword();
         return auth;
+    }
+
+    /**
+     * PulseAudio Server is enabled
+     *
+     * @param c context
+     * @return true if enabled
+     */
+    static Boolean isPulseAudio(Context c) {
+        return SETTINGS.get(c, "is_pulseaudio").equals("true");
+    }
+
+    /**
+     * Get http port
+     *
+     * @param c context
+     * @return port
+     */
+    static String getPulseAudioPort(Context c) {
+        return SETTINGS.get(c, "pulseaudio_port");
     }
 
     /**
@@ -850,14 +879,14 @@ public class PrefStore {
                 startReceive.setAction("ru.meefik.linuxdeploy.BROADCAST_ACTION");
                 startReceive.putExtra("start", true);
                 PendingIntent pendingIntentStart = PendingIntent.getBroadcast(context, 3, startReceive, PendingIntent.FLAG_UPDATE_CURRENT);
-                int startIcon = SETTINGS.get(context, "theme").equals("dark") ?  R.drawable.ic_action_start_dark : R.drawable.ic_action_start_light;
+                int startIcon = SETTINGS.get(context, "theme").equals("dark") ? R.drawable.ic_action_start_dark : R.drawable.ic_action_start_light;
                 mBuilder.addAction(startIcon, context.getString(R.string.menu_start), pendingIntentStart);
 
                 Intent stopReceive = new Intent();
                 stopReceive.setAction("ru.meefik.linuxdeploy.BROADCAST_ACTION");
                 stopReceive.putExtra("stop", true);
                 PendingIntent pendingIntentStop = PendingIntent.getBroadcast(context, 4, stopReceive, PendingIntent.FLAG_UPDATE_CURRENT);
-                int stopIcon = SETTINGS.get(context, "theme").equals("dark") ?  R.drawable.ic_action_stop_dark : R.drawable.ic_action_stop_light;
+                int stopIcon = SETTINGS.get(context, "theme").equals("dark") ? R.drawable.ic_action_stop_dark : R.drawable.ic_action_stop_light;
                 mBuilder.addAction(stopIcon, context.getString(R.string.menu_stop), pendingIntentStop);
             }
             mBuilder.setOngoing(true);

@@ -176,6 +176,22 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/audio_preferences" >
+
+        <CheckBoxPreference
+            android:defaultValue="@string/is_audio"
+            android:key="is_audio"
+            android:summary="@string/summary_is_audio_preference"
+            android:title="@string/title_is_audio_preference" />
+
+        <PreferenceScreen
+            android:dependency="is_audio"
+            android:key="audio_properties"
+            android:summary="@string/summary_audio_properties_preference"
+            android:title="@string/title_audio_properties_preference" />
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/gui_preferences" >
 
         <CheckBoxPreference

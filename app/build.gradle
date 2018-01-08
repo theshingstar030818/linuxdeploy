@@ -8,8 +8,8 @@ android {
         applicationId 'ru.meefik.linuxdeploy'
         minSdkVersion 10
         targetSdkVersion 25
-        versionCode 231
-        versionName "2.0.5"
+        versionCode 232
+        versionName "2.1.0-beta2"
     }
     buildTypes {
         release {

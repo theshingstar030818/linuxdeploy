@@ -1,7 +1,6 @@
 package ru.meefik.linuxdeploy;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -85,6 +84,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements
                 EnvUtils.execService(getBaseContext(), "telnetd", null);
                 break;
             case "telnet_port":
+                // restart telnetd
+                EnvUtils.execService(getBaseContext(), "telnetd", "restart");
                 // restart httpd
                 EnvUtils.execService(getBaseContext(), "httpd", "restart");
             case "telnet_localhost":
@@ -100,6 +101,13 @@ public class SettingsActivity extends AppCompatPreferenceActivity implements
                 // restart httpd
                 EnvUtils.execService(getBaseContext(), "httpd", "restart");
                 break;
+            case "is_pulseaudio":
+                // start/stop pulseaudio
+                EnvUtils.execService(getBaseContext(), "pulseaudio", null);
+                break;
+            case "pulseaudio_port":
+                // restart pulseaudio
+                EnvUtils.execService(getBaseContext(), "pulseaudio", "restart");
             case "autostart":
                 // set autostart settings
                 int autostartFlag = (PrefStore.isAutostart(this) ?

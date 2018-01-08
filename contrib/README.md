@@ -12,3 +12,6 @@ pkgdetails https://dev.openwrt.org/browser/packages/admin/debootstrap/files/pkgd
 QEMU: https://packages.debian.org/stretch/qemu-user-static
 
 mke2fs (e2fsprogs): http://packages.debian.org/wheezy/e2fsprogs
+
+pulseaudio-sles-ndk: https://github.com/twaik/pulseaudio-sles-ndk
+

@@ -35,6 +35,9 @@ public class ExecService extends Service {
                         case "httpd":
                             EnvUtils.httpd(mContext, args);
                             break;
+                        case "pulseaudio":
+                            EnvUtils.pulseaudio(mContext, args);
+                            break;
                         default:
                             PrefStore.showNotification(mContext, null);
                             EnvUtils.cli(mContext, cmd, args);

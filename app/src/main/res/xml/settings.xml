@@ -135,7 +135,7 @@
             android:summary="@string/summary_removeenv_preference"
             android:title="@string/title_removeenv_preference" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/manage_preferences" >
+    <PreferenceCategory android:title="@string/services_preferences" >
         <CheckBoxPreference
             android:defaultValue="@string/is_telnet"
             android:key="is_telnet"
@@ -175,6 +175,19 @@
             android:key="http_conf"
             android:summary="@string/http_conf"
             android:title="@string/title_http_conf_preference" />
+        <CheckBoxPreference
+            android:defaultValue="@string/is_pulseaudio"
+            android:key="is_pulseaudio"
+            android:summary="@string/summary_is_pulseaudio_preference"
+            android:title="@string/title_is_pulseaudio_preference" />
+        <EditTextPreference
+            android:dependency="is_pulseaudio"
+            android:defaultValue="@string/pulseaudio_port"
+            android:dialogTitle="@string/dialog_title_pulseaudio_port_preference"
+            android:inputType="numberDecimal"
+            android:key="pulseaudio_port"
+            android:summary="@string/pulseaudio_port"
+            android:title="@string/title_pulseaudio_port_preference" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/debug_preferences" >
         <CheckBoxPreference
